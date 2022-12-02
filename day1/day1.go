@@ -13,46 +13,46 @@ func Solve1() {
 	result := 0
 	sum := 0
 
-	parsedData := parseInput("./day1/input.txt")
+	parsedData := parseInput("./day1/sample.txt")
 	for _, line := range parsedData {
-		if line != "" {
-			num, err := strconv.Atoi(line)
-			if err != nil {
-				log.Fatalf("Unable to parse number %s", line)
-			}
-
-			sum += num
-		} else {
+		if line == "" {
 			if sum > result {
 				result = sum
 			}
 			sum = 0
+			continue
 		}
+		num, err := strconv.Atoi(line)
+		if err != nil {
+			log.Fatalf("Unable to parse number %s", line)
+		}
+
+		sum += num
 	}
 	if sum > result {
 		result = sum
 	}
 
-	fmt.Printf("The result is %d", result)
+	fmt.Printf("The result is %d\n", result)
 }
 
 func Solve2() {
 	var calories []int
 	sum := 0
 
-	parsedData := parseInput("./day1/input.txt")
+	parsedData := parseInput("./day1/sample.txt")
 	for _, line := range parsedData {
-		if line != "" {
-			num, err := strconv.Atoi(line)
-			if err != nil {
-				log.Fatalf("Unable to parse number %s", line)
-			}
-
-			sum += num
-		} else {
+		if line == "" {
 			calories = append(calories, sum)
 			sum = 0
+			continue
 		}
+		num, err := strconv.Atoi(line)
+		if err != nil {
+			log.Fatalf("Unable to parse number %s\n", line)
+		}
+
+		sum += num
 	}
 	calories = append(calories, sum)
 
