@@ -56,14 +56,17 @@ func Solve1() {
 
 	for _, rucksack := range rucksacks {
 		for _, ch := range rucksack.compOne {
-			if strings.ContainsRune(rucksack.compTwo, ch) {
-				if unicode.IsLower(ch) {
-					priorities += int(ch) - 96
-					break
-				}
-				priorities += int(ch) - 38
+			if !strings.ContainsRune(rucksack.compTwo, ch) {
+				continue
+			}
+
+			if unicode.IsLower(ch) {
+				priorities += int(ch) - 96
 				break
 			}
+			priorities += int(ch) - 38
+			break
+
 		}
 	}
 
@@ -76,14 +79,17 @@ func Solve2() {
 
 	for _, group := range groups {
 		for _, ch := range group.rucksacks[group.indexes[0]] {
-			if strings.ContainsRune(group.rucksacks[group.indexes[1]], ch) && strings.ContainsRune(group.rucksacks[group.indexes[2]], ch) {
-				if unicode.IsLower(ch) {
-					priorities += int(ch) - 96
-					break
-				}
-				priorities += int(ch) - 38
+			if !(strings.ContainsRune(group.rucksacks[group.indexes[1]], ch) && strings.ContainsRune(group.rucksacks[group.indexes[2]], ch)) {
+				continue
+			}
+
+			if unicode.IsLower(ch) {
+				priorities += int(ch) - 96
 				break
 			}
+			priorities += int(ch) - 38
+			break
+
 		}
 	}
 
