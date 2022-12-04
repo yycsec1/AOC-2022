@@ -25,13 +25,9 @@ func Solve2() {
 
 	pairsList := parseInput("./day4/input.txt")
 	for _, pair := range pairsList {
-		if (pair[0] <= pair[2] && pair[3] <= pair[1]) || (pair[2] <= pair[0] && pair[1] <= pair[3]) {
+		if (pair[0] <= pair[2] && pair[2] <= pair[1]) || (pair[0] <= pair[3] && pair[3] <= pair[1]) || (pair[2] <= pair[0] && pair[0] <= pair[3]) || (pair[2] <= pair[1] && pair[1] <= pair[3]) {
 			result++
-			continue
-		}
 
-		if (pair[0] <= pair[2] && pair[2] <= pair[1]) || (pair[0] <= pair[3] && pair[3] <= pair[1]) {
-			result++
 		}
 	}
 
