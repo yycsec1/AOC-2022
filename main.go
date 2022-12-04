@@ -1,10 +1,8 @@
 package main
 
-import (
-	"AOC-2022/day3"
-)
+import "AOC-2022/day4"
 
 func main() {
-	day3.Solve1()
-	day3.Solve2()
+	day4.Solve1()
+	day4.Solve2()
 }

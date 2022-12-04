@@ -23,12 +23,6 @@ func parseInput(fileName string) (opponentChoice []uint8, yourChoices []uint8) {
 	return
 }
 
-/*
-65 88 Rock (win 21, draw 23, lose 22)
-66 89 Paper (win 24, draw 23, lose 22)
-67 90 Scissor (win 24, draw 23, lose 25)
-*/
-
 func getGamePoints(opponentChoice uint8, yourChoice uint8) (points int) {
 	diff := yourChoice - opponentChoice
 	if diff == 23 {

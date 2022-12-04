@@ -7,7 +7,7 @@ import (
 	"unicode"
 )
 
-func parseInput(fileName string) (rucksacks [][]string, groups [][]string) {
+func parseInput(fileName string) (rucksacks, groups [][]string) {
 	byteData, _ := os.ReadFile(fileName)
 
 	stringData := strings.Split(string(byteData), "\r\n")
