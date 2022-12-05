@@ -18,7 +18,7 @@ func Solve1() {
 	for i := 0; i < len(stacks); i++ {
 		result += stacks[i][0]
 	}
-	fmt.Println(result)
+	fmt.Printf("The result is %s\n", result)
 }
 
 func Solve2() {
@@ -36,7 +36,7 @@ func Solve2() {
 	for i := 0; i < len(stacks); i++ {
 		result += stacks[i][0]
 	}
-	fmt.Println(result)
+	fmt.Printf("The result is %s\n", result)
 }
 
 func parseInput(fileName string) (stacks [][]string, moves [][]int) {
