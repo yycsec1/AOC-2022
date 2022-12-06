@@ -25,13 +25,9 @@ func Solve2() {
 	result := ""
 	stacks, moves := parseInput("./day5/input.txt")
 	for _, move := range moves {
-		var temp []string
-		for i := 0; i < move[0]; i++ {
-			temp = append(temp, pop(&stacks[move[1]-1]))
-		}
-		for i := len(temp); i > 0; i-- {
-			push(&stacks[move[2]-1], temp[i-1])
-		}
+		//With append() is it always better to use fill slice syntax (e.g. slice[min:max:capacity]) to avoid unexpected behaviour
+		stacks[move[2]-1] = append(stacks[move[1]-1][0:move[0]:move[0]], stacks[move[2]-1]...)
+		stacks[move[1]-1] = stacks[move[1]-1][move[0]:]
 	}
 	for i := 0; i < len(stacks); i++ {
 		result += stacks[i][0]
