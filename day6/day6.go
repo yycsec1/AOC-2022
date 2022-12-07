@@ -3,7 +3,6 @@ package day6
 import (
 	"fmt"
 	"os"
-	"strings"
 )
 
 func Solve1() {
@@ -19,7 +18,7 @@ func Solve1() {
 func Solve2() {
 	buffer := parseInput("./day6/input.txt")
 	for i := 0; i < len(buffer); i++ {
-		if isStartMarker(buffer[i : i+14]) {
+		if len(stringSet(buffer[i:i+14])) == 14 {
 			fmt.Printf("The result is %d\n", i+14)
 			break
 		}
@@ -38,13 +37,4 @@ func stringSet(str string) map[rune]bool {
 		strSet[ch] = true
 	}
 	return strSet
-}
-
-func isStartMarker(str string) bool {
-	for _, ch := range str {
-		if strings.Count(str, string(ch)) > 1 {
-			return false
-		}
-	}
-	return true
 }
