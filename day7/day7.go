@@ -11,6 +11,7 @@ import (
 func Solve1() {
 	result := 0
 	dirSizes := parseInput("./day7/input.txt")
+	fmt.Println(dirSizes["/"])
 	for _, size := range dirSizes {
 		if size < 100000 {
 			result += size
