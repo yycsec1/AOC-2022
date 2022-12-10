@@ -2,6 +2,7 @@ package day5
 
 import (
 	"fmt"
+	"golang.org/x/exp/slices"
 	"os"
 	"strconv"
 	"strings"
@@ -39,7 +40,8 @@ func parseInput(fileName string) (stacks [][]string, moves [][]int) {
 	byteData, _ := os.ReadFile(fileName)
 	stringData := strings.Split(string(byteData), "\r\n")
 
-	index := indexOf(stringData, "")
+	index := slices.Index(stringData, "")
+	//index := indexOf(stringData, "")
 	stackCount := len(strings.Fields(stringData[index-1]))
 	for i := 0; i < stackCount; i++ {
 		stacks = append(stacks, []string{})
@@ -71,19 +73,5 @@ func push(list *[]string, ele string) {
 func pop(list *[]string) (ele string) {
 	ele = (*list)[0]
 	*list = (*list)[1:]
-	return
-}
-
-func indexOf(array []string, item string) (index int) {
-	index = -1
-	if len(array) == 0 {
-		return
-	}
-	for i, ele := range array {
-		if ele == item {
-			index = i
-			return
-		}
-	}
 	return
 }
