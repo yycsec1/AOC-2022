@@ -5,8 +5,6 @@ import (
 	"os"
 	"strconv"
 	"strings"
-
-	"golang.org/x/exp/slices"
 )
 
 func Solve1() {
@@ -33,22 +31,20 @@ func Solve1() {
 
 func Solve2() {
 	instructions := parseInput("./day10/input.txt")
-	sprite := []int{1, 2, 3}
+	x := 1
 	cycles := 0
 	screenText := ""
 	i := 0
 	for i < len(instructions) {
 		switch instructions[i] {
 		case "noop":
-			renderCycle(&cycles, &screenText, &sprite)
+			renderCycle(&cycles, &screenText, &x)
 			i++
 		case "addx":
-			renderCycle(&cycles, &screenText, &sprite)
-			renderCycle(&cycles, &screenText, &sprite)
+			renderCycle(&cycles, &screenText, &x)
+			renderCycle(&cycles, &screenText, &x)
 			value, _ := strconv.Atoi(instructions[i+1])
-			for j := 0; j < len(sprite); j++ {
-				sprite[j] += value
-			}
+			x += value
 			i += 2
 		}
 	}
@@ -67,11 +63,11 @@ func doCycle(cycle *int, x *int, signalStrength *int) {
 	}
 }
 
-func renderCycle(cycle *int, screenText *string, sprite *[]int) {
+func renderCycle(cycle *int, screenText *string, x *int) {
 	*cycle++
-	pixel := "."
+	pixel := " "
 	mod := *cycle % 40
-	if slices.Contains(*sprite, mod) {
+	if 0 <= (mod-*x) && (mod-*x) <= 2 {
 		pixel = "#"
 	}
 	*screenText += pixel
