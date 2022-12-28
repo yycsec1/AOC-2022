@@ -32,8 +32,8 @@ func Solve2() {
 	_, signals := parseInput("./day13/input.txt")
 	var dp1 []interface{}
 	var dp2 []interface{}
-	json.Unmarshal([]byte("[[2]]"), &dp1)
-	json.Unmarshal([]byte("[[6]]"), &dp2)
+	_ = json.Unmarshal([]byte("[[2]]"), &dp1)
+	_ = json.Unmarshal([]byte("[[6]]"), &dp2)
 	for _, signal := range signals {
 		ans1, ans2 := isOrdered(signal, dp1), isOrdered(signal, dp2)
 		if ans1 == 1 {
@@ -57,8 +57,8 @@ func parseInput(fileName string) (pairs []Pair, signals [][]interface{}) {
 		var left []interface{}
 		var right []interface{}
 		lines := strings.Split(section, "\n")
-		json.Unmarshal([]byte(lines[0]), &left)
-		json.Unmarshal([]byte(lines[1]), &right)
+		_ = json.Unmarshal([]byte(lines[0]), &left)
+		_ = json.Unmarshal([]byte(lines[1]), &right)
 		pairs = append(pairs, Pair{left, right})
 		signals = append(signals, left, right)
 	}
@@ -137,7 +137,5 @@ func isOrdered(left, right []interface{}) int {
 	if len(right) < len(left) {
 		return -1
 	}
-	//fmt.Println("This should never happen", left, right)
-	//fmt.Println(left, right)
 	return 0
 }
